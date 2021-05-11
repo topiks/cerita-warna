@@ -8,4 +8,5 @@
     <color name="baseBackground2">#EBE9E9</color>
     <color name="black_overlay">#66000000</color>
     <color name="trans">#88000000</color>
+    <color name="basePink">#DD0E7A</color>
 </resources>

@@ -27,12 +27,12 @@ class HomeActivity : AppCompatActivity() {
             var reset = Intent(this@HomeActivity, OnBoardingActivity::class.java)
             startActivity(reset)
         }
-//
-//        btn_coba.setOnClickListener {
-//
-//            var kamera = Intent(this@HomeActivity, com.tahufikprojects.ceritawarna.deteksiwarna.CobaActivity::class.java)
-//            startActivity(kamera)
-//        }
+
+        sliderku.setOnClickListener {
+
+            var kamera = Intent(this@HomeActivity, com.tahufikprojects.ceritawarna.CobaActivity::class.java)
+            startActivity(kamera)
+        }
 //
 //        btn_cap.setOnClickListener {
 //

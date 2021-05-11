@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "204881310075",
+    "project_id": "cerita-warna-2e694",
+    "storage_bucket": "cerita-warna-2e694.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204881310075:android:fbc33fafc06fb9b4d14dde",
+        "android_client_info": {
+          "package_name": "com.tahufikprojects.ceritawarna"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204881310075-btp22vib695od627caufc9q2udpkrves.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXpWuc9Ff7tH7gNvTKUSi35sxRe__X-aU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204881310075-btp22vib695od627caufc9q2udpkrves.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

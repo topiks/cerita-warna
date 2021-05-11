@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/baseBackground"
-    tools:context=".DaftarActivity">
+    tools:context=".autentikasiuser.DaftarActivity">
 
     <TextView
         android:id="@+id/textView10"
@@ -44,18 +44,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/lora"
-        android:text="Email"
+        android:text="Username"
         android:textColor="@color/baseBlue"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/edit_email_masuk"
+        app:layout_constraintStart_toStartOf="@+id/edit_username_masuk"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/edit_email_masuk"
+        android:id="@+id/edit_username_masuk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:textColor="@color/baseBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
         android:textColor="@color/baseBlue"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/edit_pass_masuk"
-        app:layout_constraintTop_toBottomOf="@+id/edit_email_masuk" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_username_masuk" />
 
     <Button
         android:id="@+id/btn_masuk_confirm"

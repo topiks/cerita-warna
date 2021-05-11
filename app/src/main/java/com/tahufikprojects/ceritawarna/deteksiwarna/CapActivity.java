@@ -19,7 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.tahufikprojects.ceritawarna.R;
-import com.tahufikprojects.ceritawarna.coba.ColorNameBuilder;
+import com.tahufikprojects.ceritawarna.datawarna.ColorNameBuilder;
 
 public class CapActivity extends AppCompatActivity {
     // initialize variable

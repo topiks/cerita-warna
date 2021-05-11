@@ -30,14 +30,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.noActionBar">
-        <activity android:name=".coba.CobaActivity"></activity>
-        <activity android:name=".coba.FullscreenActivity" />
+        <activity android:name=".datawarna.CobaActivity"></activity>
+        <activity android:name=".datawarna.FullscreenActivity" />
         <activity android:name=".deteksiwarna.CapActivity" />
         <activity android:name=".ambilwarna.WarnaActivity" />
         <activity android:name=".deteksiwarna.CobaActivity" />
-        <activity android:name=".home.HomeActivity" />
-        <activity android:name=".MasukActivity" />
-        <activity android:name=".DaftarActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".autentikasiuser.MasukActivity" />
+        <activity android:name=".autentikasiuser.DaftarActivity" />
         <activity android:name=".OnBoardingActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>

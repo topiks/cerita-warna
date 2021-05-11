@@ -5,4 +5,5 @@ class User {
     var nama:String ?=""
     var password:String ?=""
     var status:String ?=""
+    var username:String ?=""
 }

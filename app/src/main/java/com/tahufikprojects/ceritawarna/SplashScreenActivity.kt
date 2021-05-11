@@ -17,7 +17,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 var intent = Intent(this@SplashScreenActivity, OnBoardingActivity::class.java)
                 startActivity(intent)
                 finish()
-            }, 10
+            }, 3000
         )
 
     }

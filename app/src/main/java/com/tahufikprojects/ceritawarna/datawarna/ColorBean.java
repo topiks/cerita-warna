@@ -1,4 +1,4 @@
-package com.tahufikprojects.ceritawarna.coba;
+package com.tahufikprojects.ceritawarna.datawarna;
 
 public class ColorBean {
     private String colorName;

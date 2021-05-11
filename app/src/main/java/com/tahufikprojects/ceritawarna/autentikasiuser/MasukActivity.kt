@@ -1,12 +1,12 @@
-package com.tahufikprojects.ceritawarna
+package com.tahufikprojects.ceritawarna.autentikasiuser
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.database.*
-import com.tahufikprojects.ceritawarna.autentikasiuser.User
-import com.tahufikprojects.ceritawarna.home.HomeActivity
+import com.tahufikprojects.ceritawarna.R
+import com.tahufikprojects.ceritawarna.HomeActivity
 import com.tahufikprojects.ceritawarna.utils.Preferences
 import kotlinx.android.synthetic.main.activity_masuk.*
 
@@ -35,13 +35,13 @@ class MasukActivity : AppCompatActivity() {
         }
 
         btn_masuk_confirm.setOnClickListener {
-            inputUsername = edit_email_masuk.text.toString()
+            inputUsername = edit_username_masuk.text.toString()
             inputPass = edit_pass_masuk.text.toString()
 
             if(inputUsername.equals(""))
             {
-                edit_email_masuk.error = "Silahkan Tulis Email Anda"
-                edit_email_masuk.requestFocus()
+                edit_username_masuk.error = "Silahkan Tulis Username Anda"
+                edit_username_masuk.requestFocus()
             }
             else if(inputPass.equals(""))
             {
@@ -81,6 +81,7 @@ class MasukActivity : AppCompatActivity() {
                         
                         var intent = Intent(this@MasukActivity, HomeActivity::class.java)
                         startActivity(intent)
+                        finishAffinity()
                     }
                     else
                     {

@@ -3,10 +3,9 @@ package com.tahufikprojects.ceritawarna
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.firebase.database.FirebaseDatabase
-import com.tahufikprojects.ceritawarna.home.HomeActivity
+import com.tahufikprojects.ceritawarna.autentikasiuser.DaftarActivity
+import com.tahufikprojects.ceritawarna.autentikasiuser.MasukActivity
 import com.tahufikprojects.ceritawarna.utils.Preferences
-import kotlinx.android.synthetic.main.activity_daftar.*
 import kotlinx.android.synthetic.main.activity_on_boarding.*
 
 class OnBoardingActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class OnBoardingActivity : AppCompatActivity() {
         {
             finishAffinity()
 
-            var goHome = Intent(this@OnBoardingActivity, HomeActivity::class.java)
+            var goHome = Intent(this@OnBoardingActivity, MasukActivity::class.java)
             startActivity(goHome)
         }
 

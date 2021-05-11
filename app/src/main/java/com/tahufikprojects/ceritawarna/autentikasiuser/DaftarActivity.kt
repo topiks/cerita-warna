@@ -1,13 +1,13 @@
-package com.tahufikprojects.ceritawarna
+package com.tahufikprojects.ceritawarna.autentikasiuser
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import com.tahufikprojects.ceritawarna.R
 import kotlinx.android.synthetic.main.activity_daftar.*
-import com.tahufikprojects.ceritawarna.autentikasiuser.User
-import com.tahufikprojects.ceritawarna.home.HomeActivity
+import com.tahufikprojects.ceritawarna.HomeActivity
 
 
 class DaftarActivity : AppCompatActivity() {
@@ -15,6 +15,7 @@ class DaftarActivity : AppCompatActivity() {
     lateinit var inputNama:String
     lateinit var inputEmail:String
     lateinit var inputPass:String
+    lateinit var inputUsername:String
 
     lateinit var mDatabaseReference: DatabaseReference
     lateinit var mFirebaseDatabase: FirebaseDatabase
@@ -33,11 +34,17 @@ class DaftarActivity : AppCompatActivity() {
             inputNama = edit_nama_daftar.text.toString()
             inputEmail = edit_email_daftar.text.toString()
             inputPass = edit_pass_daftar.text.toString()
+            inputUsername = edit_username_daftar.text.toString()
 
             if(inputNama.equals(""))
             {
                 edit_nama_daftar.error = "Silhakan isi Nama Anda"
                 edit_nama_daftar.requestFocus()
+            }
+            else if(inputUsername.equals(""))
+            {
+                edit_username_daftar.error = "Silhakan isi Username Anda"
+                edit_username_daftar.requestFocus()
             }
             else if(inputEmail.equals(""))
             {
@@ -51,26 +58,27 @@ class DaftarActivity : AppCompatActivity() {
             }
             else
             {
-                saveDataBaru(inputNama, inputEmail, inputPass)
+                saveDataBaru(inputNama, inputUsername, inputEmail, inputPass)
             }
 
         }
     }
 
-    private fun saveDataBaru(inputNama: String, inputEmail: String, inputPass: String) {
+    private fun saveDataBaru(inputNama: String, inputUsername: String, inputEmail: String, inputPass: String) {
         var user = User()
         user.nama = inputNama
         user.email = inputEmail
         user.password = inputPass
+        user.username = inputUsername
 
-        if(inputEmail != null)
+        if(inputUsername != null)
         {
-            cekDataPrimary(inputEmail, user)
+            cekDataPrimary(inputUsername, user)
         }
     }
 
-    private fun cekDataPrimary(inputEmail: String, data: User) {
-        mDatabaseReference.child(inputEmail).addValueEventListener(object : ValueEventListener
+    private fun cekDataPrimary(inputUsername: String, data: User) {
+        mDatabaseReference.child(inputUsername).addValueEventListener(object : ValueEventListener
         {
             override fun onCancelled(databaseError: DatabaseError)
             {
@@ -82,10 +90,12 @@ class DaftarActivity : AppCompatActivity() {
                 var user = dataSnapshot.getValue(User::class.java)
                 if(user == null)
                 {
-                    mDatabaseReference.child(inputEmail).setValue(data)
+                    mDatabaseReference.child(inputUsername).setValue(data)
 
                     var intent = Intent(this@DaftarActivity, HomeActivity::class.java)
                     startActivity(intent)
+
+                    finishAffinity()
                 }
                 else
                 {

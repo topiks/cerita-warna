@@ -1,6 +1,5 @@
-package com.tahufikprojects.ceritawarna.coba;
+package com.tahufikprojects.ceritawarna.datawarna;
 
-import com.tahufikprojects.ceritawarna.coba.ColorBean;
 import java.util.ArrayList;
 
 public class ColorNameCollection {

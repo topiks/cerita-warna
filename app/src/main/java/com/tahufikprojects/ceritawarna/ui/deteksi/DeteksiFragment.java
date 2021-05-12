@@ -23,11 +23,11 @@ public class DeteksiFragment extends Fragment {
         deteksiViewModel =
                 ViewModelProviders.of(this).get(DeteksiViewModel.class);
         View root = inflater.inflate(R.layout.fragment_deteksi, container, false);
-        final TextView textView = root.findViewById(R.id.text_deteksi);
+//        final TextView textView = root.findViewById(R.id.text_deteksi);
         deteksiViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+//                textView.setText(s);
             }
         });
         return root;

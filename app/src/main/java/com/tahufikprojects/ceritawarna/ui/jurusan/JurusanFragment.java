@@ -23,11 +23,11 @@ public class JurusanFragment extends Fragment {
         jurusanViewModel =
                 ViewModelProviders.of(this).get(JurusanViewModel.class);
         View root = inflater.inflate(R.layout.fragment_jurusan, container, false);
-        final TextView textView = root.findViewById(R.id.text_jurusan);
+//        final TextView textView = root.findViewById(R.id.text_jurusan);
         jurusanViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+//                textView.setText(s);
             }
         });
         return root;

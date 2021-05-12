@@ -23,11 +23,11 @@ public class TesFragment extends Fragment {
         mViewModel =
                 ViewModelProviders.of(this).get(TesViewModel.class);
         View root = inflater.inflate(R.layout.tes_fragment, container, false);
-        final TextView textView = root.findViewById(R.id.text_tes);
+//        final TextView textView = root.findViewById(R.id.text_tes);
         mViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+//                textView.setText(s);
             }
         });
         return root;

@@ -7,7 +7,7 @@
     tools:context=".ui.deteksi.DeteksiFragment">
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btn_deteksi"
         android:layout_width="199dp"
         android:layout_height="42dp"
         android:layout_marginStart="125dp"

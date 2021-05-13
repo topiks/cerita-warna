@@ -1,9 +1,11 @@
 package com.tahufikprojects.ceritawarna.ui.jurusan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +15,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.tahufikprojects.ceritawarna.R;
+import com.tahufikprojects.ceritawarna.deteksiwarna.CapActivity;
 
 public class JurusanFragment extends Fragment {
 
     private JurusanViewModel jurusanViewModel;
+    Button button;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,5 +35,7 @@ public class JurusanFragment extends Fragment {
             }
         });
         return root;
+
+
     }
 }

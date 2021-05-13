@@ -1,13 +1,20 @@
 package com.tahufikprojects.ceritawarna;
 
+import android.graphics.Color;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.core.Tag;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,9 +23,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.List;
+
 public class CobaActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,8 @@ public class CobaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coba3);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        toolbar.setBackgroundColor(Color.rgb(255,0,0));
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -38,6 +50,7 @@ public class CobaActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override
@@ -52,5 +65,25 @@ public class CobaActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+//
+//    public Fragment getVisibleFragment(){
+//        FragmentManager fragmentManager = CobaActivity.this.getSupportFragmentManager();
+//        List<Fragment> fragments = fragmentManager.getFragments();
+//        if(fragments != null){
+//            for(Fragment fragment : fragments){
+//                if(fragment != null && fragment.isVisible())
+//                    return fragment;
+//            }
+//        }
+//        return null;
+//    }
+
+
+    Fragment getCurrentFragment()
+    {
+        Fragment currentFragment = getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        return currentFragment;
     }
 }

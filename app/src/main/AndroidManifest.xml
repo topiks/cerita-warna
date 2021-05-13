@@ -30,10 +30,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.noActionBar">
+        <activity android:name=".tesbutawarna.TestMainActivity"></activity>
         <activity
             android:name=".CobaActivity"
             android:label="@string/title_activity_coba"
-            android:theme="@style/AppTheme.noActionBar.NoActionBar"></activity>
+            android:theme="@style/AppTheme.noActionBar.NoActionBar" />
         <activity android:name=".datawarna.CobaActivity" />
         <activity android:name=".deteksiwarna.CapActivity" />
         <activity android:name=".ambilwarna.WarnaActivity" />

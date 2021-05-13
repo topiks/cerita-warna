@@ -31,7 +31,8 @@
         <item
             android:id="@+id/nav_deteksi"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Deteksi Warna" />
+            android:title="Deteksi Warna Drawer"
+            />
     </group>
 
 </menu>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tes_navigation"
+    app:startDestination="@id/tesRuleFragment">
+
+    <fragment
+        android:id="@+id/tesRuleFragment"
+        android:name="com.tahufikprojects.ceritawarna.tesbutawarna.TesRuleFragment"
+        android:label="TesRuleFragment" >
+        <action
+            android:id="@+id/action_tesRuleFragment_to_quizTestFragment"
+            app:destination="@id/quizTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizTestFragment"
+        android:name="com.tahufikprojects.ceritawarna.tesbutawarna.QuizTestFragment"
+        android:label="fragment_quiz_test"
+        tools:layout="@layout/fragment_quiz_test" />
+</navigation>

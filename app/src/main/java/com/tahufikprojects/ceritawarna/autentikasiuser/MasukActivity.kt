@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.database.*
+import com.tahufikprojects.ceritawarna.CobaActivity
 import com.tahufikprojects.ceritawarna.R
 import com.tahufikprojects.ceritawarna.HomeActivity
 import com.tahufikprojects.ceritawarna.utils.Preferences
@@ -30,7 +31,7 @@ class MasukActivity : AppCompatActivity() {
         {
             finishAffinity()
 
-            var goHome = Intent(this@MasukActivity, HomeActivity::class.java)
+            var goHome = Intent(this@MasukActivity, CobaActivity::class.java)
             startActivity(goHome)
         }
 

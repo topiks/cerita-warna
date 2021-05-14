@@ -31,19 +31,39 @@ class QuizTestFragment : Fragment() {
     lateinit var binding: FragmentQuizTestBinding
     lateinit var currentQuestions: Questions
     private var questionIndex = 0
-    val maxQuestions = 2
+    val maxQuestions = 24
     lateinit var answers:ArrayList<String>
     lateinit var selectedAnswer: String
     var score = 0
     lateinit var name: String
 
     var questions = arrayListOf<Questions>(
-        Questions("1 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5"), "@drawable/soal1"),
-        Questions("2 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5"), "@drawable/soal2")
-//        Questions("3 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-//        Questions("4 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-//        Questions("5 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-//        Questions("6 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5"))
+        Questions("1 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("2 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("3 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("4 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("5 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("6 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("7 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("8 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("9 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("10 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("11 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("12 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("13 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("14 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("15 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("16 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("17 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("18 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("19 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("20 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("21 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("22 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("23 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
+        Questions("24 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5"))
+
+
     )
 
 
@@ -51,8 +71,7 @@ class QuizTestFragment : Fragment() {
     {
         currentQuestions = questions[questionIndex]
 //        bgsoal.setImageResource(R.drawable.soal2)
-        name = currentQuestions.g
-        Toast.makeText(activity, name, Toast.LENGTH_SHORT).show()
+
         answers = ArrayList(currentQuestions.theAnswer)
         answers.shuffle()
         Log.d("ANSWER", answers[0] + " " + answers[1] + " " + answers[2] + " " + answers[3])
@@ -61,12 +80,60 @@ class QuizTestFragment : Fragment() {
 
     private fun randomQuestions()
     {
-        questions.shuffle();
+//        questions.shuffle();
         setQuestions()
     }
 
     private fun checkAnswers(answers:String)
     {
+        if(questionIndex.equals(0))
+            bgsoal.setImageResource(R.drawable.soal2)
+        else if(questionIndex.equals(1))
+            bgsoal.setImageResource(R.drawable.soal3)
+        else if(questionIndex.equals(2))
+            bgsoal.setImageResource(R.drawable.soal4)
+        else if(questionIndex.equals(3))
+            bgsoal.setImageResource(R.drawable.soal5)
+        else if(questionIndex.equals(4))
+            bgsoal.setImageResource(R.drawable.soal6)
+        else if(questionIndex.equals(5))
+            bgsoal.setImageResource(R.drawable.soal7)
+        else if(questionIndex.equals(6))
+            bgsoal.setImageResource(R.drawable.soal8)
+        else if(questionIndex.equals(7))
+            bgsoal.setImageResource(R.drawable.soal9)
+        else if(questionIndex.equals(8))
+            bgsoal.setImageResource(R.drawable.soal10)
+        else if(questionIndex.equals(9))
+            bgsoal.setImageResource(R.drawable.soal11)
+        else if(questionIndex.equals(10))
+            bgsoal.setImageResource(R.drawable.soal12)
+        else if(questionIndex.equals(11))
+            bgsoal.setImageResource(R.drawable.soal13)
+        else if(questionIndex.equals(12))
+            bgsoal.setImageResource(R.drawable.soal14)
+        else if(questionIndex.equals(13))
+            bgsoal.setImageResource(R.drawable.soal15)
+        else if(questionIndex.equals(14))
+            bgsoal.setImageResource(R.drawable.soal16)
+        else if(questionIndex.equals(15))
+            bgsoal.setImageResource(R.drawable.soal17)
+        else if(questionIndex.equals(16))
+            bgsoal.setImageResource(R.drawable.soal18)
+        else if(questionIndex.equals(17))
+            bgsoal.setImageResource(R.drawable.soal19)
+        else if(questionIndex.equals(18))
+            bgsoal.setImageResource(R.drawable.soal20)
+        else if(questionIndex.equals(19))
+            bgsoal.setImageResource(R.drawable.soal21)
+        else if(questionIndex.equals(20))
+            bgsoal.setImageResource(R.drawable.soal22)
+        else if(questionIndex.equals(21))
+            bgsoal.setImageResource(R.drawable.soal23)
+        else if(questionIndex.equals(22))
+            bgsoal.setImageResource(R.drawable.soal24)
+
+
         if(answers.equals(currentQuestions.theAnswer[0]))
         {
             score = score + 1
@@ -98,7 +165,10 @@ class QuizTestFragment : Fragment() {
 //        imageResource =
 //            resources.getIdentifier(name, null, activity!!.packageName)
 //
-//        bgsoal.setImageResource(imageResource)
+//        Toast.makeText(activity, questionIndex.toString(), Toast.LENGTH_SHORT).show()
+
+        bgsoal.setImageResource(R.drawable.soal1)
+
 
         btn_tes_1.setOnClickListener {
             checkAnswers(btn_tes_1.text.toString())
@@ -121,7 +191,6 @@ class QuizTestFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_quiz_test, container, false)
         randomQuestions()
-
         binding.quiz = this
         return binding.root
     }

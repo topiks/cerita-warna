@@ -1,13 +1,17 @@
 package com.tahufikprojects.ceritawarna.tesbutawarna
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.tahufikprojects.ceritawarna.R
 import com.tahufikprojects.ceritawarna.databinding.FragmentQuizTestBinding
 import kotlinx.android.synthetic.main.fragment_quiz_test.*
@@ -36,6 +40,7 @@ class QuizTestFragment : Fragment() {
     lateinit var selectedAnswer: String
     var score = 0
     lateinit var name: String
+    private lateinit var communicator: Communicator
 
     var questions = arrayListOf<Questions>(
         Questions("1 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
@@ -152,7 +157,20 @@ class QuizTestFragment : Fragment() {
         }
         else
         {
-            Toast.makeText(activity, score.toString(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, score.toString(), Toast.LENGTH_SHORT).show()
+//            finishAffinity()
+//            NavHostFragment.findNavController(this).navigate(R.id.resultFragment)
+            communicator = activity as Communicator
+            var komentar: String
+            if(score <= 9)
+                komentar = "Wah, sayang sekali sepertinya kamu harus memeriksakan mata mu ke dokter"
+            else if(score >= 10 && score <= 12)
+                komentar = "Hasil masih tidak dapat dipastikan antara buta warna  parsial atau tidak"
+            else
+                komentar = "Dari hasil tes, kemungkinan tidak ada yang salah pada kemampuan mu dalam membedakan warna"
+
+            communicator.passDataCom(komentar)
+
         }
     }
 
@@ -182,6 +200,7 @@ class QuizTestFragment : Fragment() {
         btn_tes_4.setOnClickListener {
             checkAnswers(btn_tes_4.text.toString())
         }
+
     }
 
     override fun onCreateView(

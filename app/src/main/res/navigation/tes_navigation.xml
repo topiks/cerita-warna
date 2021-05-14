@@ -17,5 +17,14 @@
         android:id="@+id/quizTestFragment"
         android:name="com.tahufikprojects.ceritawarna.tesbutawarna.QuizTestFragment"
         android:label="fragment_quiz_test"
-        tools:layout="@layout/fragment_quiz_test" />
+        tools:layout="@layout/fragment_quiz_test" >
+        <action
+            android:id="@+id/action_quizTestFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.tahufikprojects.ceritawarna.tesbutawarna.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
 </navigation>

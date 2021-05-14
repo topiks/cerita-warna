@@ -43,32 +43,30 @@ class QuizTestFragment : Fragment() {
     private lateinit var communicator: Communicator
 
     var questions = arrayListOf<Questions>(
-        Questions("1 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("2 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("3 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("4 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("5 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("6 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("7 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("8 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("9 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("10 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("11 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("12 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("13 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("14 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("15 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("16 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("17 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("18 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("19 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("20 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("21 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("22 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("23 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5")),
-        Questions("24 satu di tambah satu sama dengan ?", arrayListOf("2", "3", "4", "5"))
-
-
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("12", "1", "2", "15")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("8", "5", "3", "2")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("29", "70", "24", "21")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("5", "3", "2", "6")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("3", "6", "5", "15")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("15", "11", "1", "17")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("74", "73", "51", "21")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("6", "5", "3", "8")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("45", "42", "73", "74")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("5", "6", "7", "13")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("7", "11", "1", "17")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("16", "11", "15", "51")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("73", "13", "70", "23")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("Tidak ada angka", "5", "4", "15")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("Tidak ada angka", "40", "4", "5")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("26", "6", "2", "28")),
+        Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("42", "4", "43", "2")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Garis alur merah dan ungu", "Garis alur merah", "Garis alur ungu", "Tidak ada angka")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Ada semacam bercak/garis, namun putus & tidak jelas", "Ada sebuah garis yang bisa diikuti alurnya", "Ada dua buah garis yang bisa diikuti alurnya", "Ada sebuah garis yang bisa diikuti alurnya, dan sebuah garis yang alurnya terputus-putus")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Garis alur merah dan ungu", "Garis alur hijau kebiruan yang bisa diikuti alurnya", "Tidak ada apa-apa", "Garis alur hijau kebiruan yang alurnya terputus-putus")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Garis alur oranye", "Tidak ada apa-apa", "Garis alur oranye terputus-putus", "Garis alur merah dan ungu")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Garis alur hijau kebiruan yang disambung garis alur hijau kekuningan", "Garis alur hijau kebiruan yang disambung garis alur ungu", "Tidak ada garis/alur yang jelas", "Garis alur merah dan ungu")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Garis alur ungu disambung garis alur oranye", "Garis alur ungu disambung garis alur hijau kebiruan", "Tidak ada garis/ alur yang jelas", "Garis alur merah dan ungu")),
+        Questions("Gambar apa yang kamu lihat di bawah?", arrayListOf("Ada sebuah garis yang sangat jelas bisa diikuti alurnya", "Ada sebuah garis alur namun terputus di tengah jalan", "Tidak ada garis/ alur yang jelas", "Garis alur merah dan ungu"))
     )
 
 

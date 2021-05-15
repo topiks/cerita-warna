@@ -2,17 +2,13 @@ package com.tahufikprojects.ceritawarna.cari
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.tahufikprojects.ceritawarna.R
 import com.tahufikprojects.ceritawarna.databinding.ActivityCariMainBinding
-import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.databinding.adapters.SearchViewBindingAdapter
 import com.google.firebase.database.*
-import com.tahufikprojects.ceritawarna.autentikasiuser.User
 import com.tahufikprojects.ceritawarna.utils.Preferences
-import kotlinx.android.synthetic.main.activity_cari_main.*
+
 
 class CariMainActivity : AppCompatActivity() {
 
@@ -80,7 +76,7 @@ class CariMainActivity : AppCompatActivity() {
                     Toast.makeText(this@CariMainActivity, "null", Toast.LENGTH_LONG).show()
                 else
                     preferences.setValues("Kampus", jurusan?.Kampus.toString())
-                    Toast.makeText(this@CariMainActivity, jurusan?.Kampus.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@CariMainActivity, jurusan?.Kampus.toString(), Toast.LENGTH_LONG).show()
 
             }
         }

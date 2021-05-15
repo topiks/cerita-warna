@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.tahufikprojects.ceritawarna.R;
 import com.tahufikprojects.ceritawarna.cari.CariMainActivity;
+import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
 import com.tahufikprojects.ceritawarna.deteksiwarna.CapActivity;
 import com.tahufikprojects.ceritawarna.tesbutawarna.TestMainActivity;
 
@@ -44,7 +45,7 @@ public class JurusanFragment extends Fragment {
                                       public void onClick( View v)
                                       {
                                           Intent intent = new Intent();
-                                          intent.setClass(getActivity(), CariMainActivity.class);
+                                          intent.setClass(getActivity(), CobaCariMainActivity.class);
                                           startActivity(intent);
 //                                          toolbar.setBackgroundResource(R.drawable.shape_blue_muda_button);
 

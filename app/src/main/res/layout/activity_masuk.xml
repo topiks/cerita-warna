@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/imageView9"
+    android:id="@+id/imageViewMasuk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/baseBackground"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/image_logo_pada_masuk"
         android:layout_width="132dp"
         android:layout_height="121dp"
         android:layout_marginTop="96dp"

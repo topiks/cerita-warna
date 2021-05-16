@@ -30,7 +30,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.noActionBar">
-        <activity android:name=".cobacari.CariKampusActivity"></activity>
+        <activity android:name=".cobacari.DetailsActivity"></activity>
+        <activity android:name=".cobacari.CariKampusActivity" />
         <activity android:name=".cobacari.CobaCariMainActivity" />
         <activity android:name=".cari.CariMainActivity" />
         <activity android:name=".tesbutawarna.TestMainActivity" />

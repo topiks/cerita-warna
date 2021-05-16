@@ -27,6 +27,8 @@ import com.tahufikprojects.ceritawarna.ui.jurusan.JurusanFragment;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class CobaCariMainActivity extends AppCompatActivity {
 
     LinearLayoutManager mLinearLayoutManager;
@@ -38,6 +40,7 @@ public class CobaCariMainActivity extends AppCompatActivity {
     Button mbutton;
     Button mbuttonPindah;
     EditText editText;
+    ArrayList<String> jurusanModelArrayList, kampusModelArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,12 @@ public class CobaCariMainActivity extends AppCompatActivity {
         mDatabaseReference = mFirebaseDatabase.getReference("Jurusan");
         mDatabaseReferenceKampus = mFirebaseDatabase.getReference("Kampus");
 
-
-
         mbutton = findViewById(R.id.cari_main);
         editText = findViewById(R.id.coba_cari);
         mbuttonPindah = findViewById(R.id.btn_ke_cari_kampus);
+
+        jurusanModelArrayList = new ArrayList<String>();
+        kampusModelArrayList = new ArrayList<String>();
 
         mbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -71,6 +75,8 @@ public class CobaCariMainActivity extends AppCompatActivity {
                 }
 //                showData();
                 else
+                    jurusanModelArrayList.removeAll(jurusanModelArrayList);
+                    kampusModelArrayList.removeAll(kampusModelArrayList);
                     firebaseSearch(strValue, mDatabaseReference, "jurusan");
 //                firebaseSearch(strValue, mDatabaseReferenceKampus, "kampus");
 
@@ -130,13 +136,11 @@ public class CobaCariMainActivity extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<JurusanModel, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull JurusanModel model) {
-                if(filterby.equals("jurusan"))
-                {
                     holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus());
+                    jurusanModelArrayList.add(model.getJurusan());
+                    kampusModelArrayList.add(model.getKampus());
+
                 }
-//                else if(filterby.equals("kampus"))
-//                    holder.setDetails(getApplicationContext(), model.getKampus(), model.getJurusan());
-            }
 
             @NonNull
             @Override
@@ -146,7 +150,14 @@ public class CobaCariMainActivity extends AppCompatActivity {
                 viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(CobaCariMainActivity.this, "halo", Toast.LENGTH_SHORT).show();
+                        String jurusan = reverseArrayList(jurusanModelArrayList).get(position);
+                        String kampus = reverseArrayList(kampusModelArrayList).get(position);
+//                        Toast.makeText(CobaCariMainActivity.this,  jurusan + " " + kampus, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CobaCariMainActivity.this, DetailsActivity.class);
+                        intent.putExtra("JURUSAN", jurusan);
+                        intent.putExtra("KAMPUS", kampus);
+                        startActivity(intent);
+
                     }
 
                     @Override
@@ -169,6 +180,27 @@ public class CobaCariMainActivity extends AppCompatActivity {
         if(firebaseRecyclerAdapter != null)
         {
             firebaseRecyclerAdapter.startListening();
+        }
+    }
+
+    public ArrayList<String> reverseArrayList(ArrayList<String> alist)
+    {
+        // Arraylist for storing reversed elements
+        ArrayList<String> revArrayList = new ArrayList<String>();
+        for (int i = alist.size() - 1; i >= 0; i--) {
+
+            // Append the elements in reverse order
+            revArrayList.add(alist.get(i));
+        }
+
+        // Return the reversed arraylist
+        return revArrayList;
+    }
+
+    public void printElements(ArrayList<Integer> alist)
+    {
+        for (int i = 0; i < alist.size(); i++) {
+            System.out.print(alist.get(i) + " ");
         }
     }
 

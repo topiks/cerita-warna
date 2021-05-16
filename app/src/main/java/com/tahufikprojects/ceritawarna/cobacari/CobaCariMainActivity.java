@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,10 +32,11 @@ public class CobaCariMainActivity extends AppCompatActivity {
     LinearLayoutManager mLinearLayoutManager;
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
-    DatabaseReference mDatabaseReference;
+    DatabaseReference mDatabaseReference, mDatabaseReferenceKampus;
     FirebaseRecyclerAdapter<JurusanModel, ViewHolder> firebaseRecyclerAdapter;
     FirebaseRecyclerOptions<JurusanModel> options;
     Button mbutton;
+    Button mbuttonPindah;
     EditText editText;
 
     @Override
@@ -49,21 +51,41 @@ public class CobaCariMainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.hasil_cari);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("Jurusan");
+        mDatabaseReferenceKampus = mFirebaseDatabase.getReference("Kampus");
 
 
 
         mbutton = findViewById(R.id.cari_main);
         editText = findViewById(R.id.coba_cari);
+        mbuttonPindah = findViewById(R.id.btn_ke_cari_kampus);
 
         mbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
                 String strValue = editText.getText().toString();
-                Toast.makeText(CobaCariMainActivity.this, strValue, Toast.LENGTH_SHORT).show();
+
+                if(strValue.equals(""))
+                {
+                    editText.setError("Masukkan Kata Kunci");
+                    editText.requestFocus();
+                }
 //                showData();
-                firebaseSearch(strValue);
+                else
+                    firebaseSearch(strValue, mDatabaseReference, "jurusan");
+//                firebaseSearch(strValue, mDatabaseReferenceKampus, "kampus");
+
             }
         });
+
+        mbuttonPindah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CobaCariMainActivity.this, CariKampusActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void showData() {
@@ -99,16 +121,21 @@ public class CobaCariMainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
-    private void firebaseSearch(String searchText)
+    private void firebaseSearch(String searchText, DatabaseReference databaseReference, final String filterby)
     {
         String query = searchText.toLowerCase();
-        Query firebaseSearchQuery = mDatabaseReference.orderByChild("jurusan").startAt(query).endAt(query + "\uf8ff");
+        Query firebaseSearchQuery = databaseReference.orderByChild(filterby).startAt(query).endAt(query + "\uf8ff");
         options = new FirebaseRecyclerOptions.Builder<JurusanModel>().setQuery(firebaseSearchQuery, JurusanModel.class).build();
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<JurusanModel, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull JurusanModel model) {
-                holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus());
+                if(filterby.equals("jurusan"))
+                {
+                    holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus());
+                }
+//                else if(filterby.equals("kampus"))
+//                    holder.setDetails(getApplicationContext(), model.getKampus(), model.getJurusan());
             }
 
             @NonNull

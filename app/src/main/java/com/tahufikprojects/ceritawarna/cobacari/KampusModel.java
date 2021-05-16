@@ -1,11 +1,10 @@
 package com.tahufikprojects.ceritawarna.cobacari;
 
-public class JurusanModel {
-
+public class KampusModel {
     String jurusan;
     String kampus;
 
-    public JurusanModel(){
+    public KampusModel(){
 
     }
 
@@ -29,4 +28,3 @@ public class JurusanModel {
         this.kampus = kampusBaru;
     }
 }
-

@@ -99,7 +99,7 @@ public class CobaCariMainActivity extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<JurusanModel, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull JurusanModel model) {
-                holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus());
+                holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus(), "jurusan", "", "");
             }
 
             @NonNull
@@ -136,7 +136,7 @@ public class CobaCariMainActivity extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<JurusanModel, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull JurusanModel model) {
-                    holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus());
+                    holder.setDetails(getApplicationContext(), model.getJurusan(), model.getKampus(), "jurusan", "", "");
                     jurusanModelArrayList.add(model.getJurusan());
                     kampusModelArrayList.add(model.getKampus());
 

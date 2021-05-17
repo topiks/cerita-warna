@@ -44,6 +44,12 @@
         android:label="Deteksi Warna"
         tools:layout="@layout/fragment_deteksi"
         />
+    <fragment
+        android:id="@+id/nav_artikel"
+        android:name="com.tahufikprojects.ceritawarna.ui.artikel.ArtikelFragment"
+        android:label="Artikel Pilihan"
+        tools:layout="@layout/artikel_fragment"
+        />
 
 
 

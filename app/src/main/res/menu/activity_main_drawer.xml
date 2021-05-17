@@ -31,7 +31,12 @@
         <item
             android:id="@+id/nav_deteksi"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Deteksi Warna Drawer"
+            android:title="Deteksi Warna"
+            />
+        <item
+            android:id="@+id/nav_artikel"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Artikel Pilihan"
             />
     </group>
 

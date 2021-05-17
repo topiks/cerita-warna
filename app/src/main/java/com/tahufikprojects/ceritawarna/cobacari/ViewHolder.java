@@ -34,13 +34,25 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setDetails(Context ctx, String namaJurusan, String namaKampus)
+    public void setDetails(Context ctx, String namaJurusan, String namaKampus, String inisialisasi, String judulArtikel, String isiArtikel)
     {
-        TextView mJurusan = mview.findViewById(R.id.nama_jurusan_hasil);
-        TextView mKampus = mview.findViewById(R.id.list_kampus_hasil);
+        if(inisialisasi.equals("jurusan") || inisialisasi.equals("kampus"))
+        {
+            TextView mJurusan = mview.findViewById(R.id.nama_jurusan_hasil);
+            TextView mKampus = mview.findViewById(R.id.list_kampus_hasil);
 
-        mJurusan.setText(namaJurusan);
-        mKampus.setText(namaKampus);
+            mJurusan.setText(namaJurusan);
+            mKampus.setText(namaKampus);
+        }
+        else if(inisialisasi.equals("artikel"))
+        {
+            TextView mJudul = mview.findViewById(R.id.judul_artikel_dari_list);
+            TextView mIsi = mview.findViewById(R.id.isi_artikel_dari_list);
+
+            mJudul.setText(judulArtikel);
+            mIsi.setText(isiArtikel);
+        }
+
     }
 
     private ViewHolder.ClickListener mClickListener;

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
 import com.tahufikprojects.ceritawarna.cobacari.JurusanModel;
 import com.tahufikprojects.ceritawarna.cobacari.ViewHolder;
 
+import java.util.ArrayList;
+
 public class ArtikelMainActivity extends AppCompatActivity {
 
     LinearLayoutManager mLinearLayoutManager;
@@ -30,6 +33,7 @@ public class ArtikelMainActivity extends AppCompatActivity {
     DatabaseReference mDatabaseReference;
     FirebaseRecyclerAdapter<ArtikelModel, ViewHolder> firebaseRecyclerAdapter;
     FirebaseRecyclerOptions<ArtikelModel> options;
+    ArrayList<String> judulModelArrayList, isiModelArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class ArtikelMainActivity extends AppCompatActivity {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setReverseLayout(true);
         mLinearLayoutManager.setStackFromEnd(true);
+        judulModelArrayList = new ArrayList<String>();
+        isiModelArrayList = new ArrayList<String>();
 
         mRecyclerView = findViewById(R.id.list_artikel);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -54,6 +60,8 @@ public class ArtikelMainActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull ArtikelModel model) {
                 holder.setDetails(getApplicationContext(), "", "", "artikel", model.getJudul(), model.getIsi());
+                judulModelArrayList.add(model.getJudul());
+                isiModelArrayList.add(model.getIsi());
             }
 
             @NonNull
@@ -64,8 +72,19 @@ public class ArtikelMainActivity extends AppCompatActivity {
                 viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(ArtikelMainActivity.this, "halo", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ArtikelMainActivity.this, "halo", Toast.LENGTH_SHORT).show();
+                        String judul = reverseArrayList(judulModelArrayList).get(position);
+                        String isi = reverseArrayList(isiModelArrayList).get(position);
+
+
+                        Toast.makeText(ArtikelMainActivity.this, judul + " " + isi, Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ArtikelMainActivity.this, DetailArtikelActivity.class);
+                        intent.putExtra("JUDUL", judul);
+                        intent.putExtra("ISI", isi);
+                        startActivity(intent);
+
                     }
+
 
                     @Override
                     public void onItemLongClick(View view, int position) {
@@ -90,4 +109,17 @@ public class ArtikelMainActivity extends AppCompatActivity {
         }
     }
 
+    public ArrayList<String> reverseArrayList(ArrayList<String> alist)
+    {
+        // Arraylist for storing reversed elements
+        ArrayList<String> revArrayList = new ArrayList<String>();
+        for (int i = alist.size() - 1; i >= 0; i--) {
+
+            // Append the elements in reverse order
+            revArrayList.add(alist.get(i));
+        }
+
+        // Return the reversed arraylist
+        return revArrayList;
+    }
 }

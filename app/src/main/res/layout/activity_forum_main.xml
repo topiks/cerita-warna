@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".forum.ForumMainActivity">
+
+<!--   Start Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_forum"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FBC376"
+        app:popupTheme="@style/AppTheme.noActionBar.PopupOverlay" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar_forum"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lora"
+            android:text="Forum Cerita Warna"
+            android:textAlignment="center"
+            android:textColor="@color/baseBlue"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+<!--End Toolbar -->
+
+
+
+<!--Start Recyclerview -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_forum"
+        android:layout_above="@+id/chat_layout"
+        />
+<!--End Recyclerview -->
+<!--    Start Linear Layout-->
+    <LinearLayout
+        android:id="@+id/chat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#EDEDEDED"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/msg_text"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Start typing"
+            android:padding="15dp"
+            android:inputType="textCapSentences|textMultiLine"
+            />
+        
+        <ImageButton
+            android:id="@+id/send"
+            android:background="@null"
+            android:src="@drawable/ic_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+    <!--    End Linear Layout-->
+
+</RelativeLayout>

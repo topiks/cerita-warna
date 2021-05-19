@@ -1,19 +1,16 @@
 package com.tahufikprojects.ceritawarna.tesbutawarna
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
+import com.tahufikprojects.ceritawarna.CobaActivity
 import com.tahufikprojects.ceritawarna.R
 import com.tahufikprojects.ceritawarna.databinding.FragmentQuizTestBinding
+import com.tahufikprojects.ceritawarna.utils.Preferences
 import kotlinx.android.synthetic.main.fragment_quiz_test.*
 
 
@@ -41,6 +38,7 @@ class QuizTestFragment : Fragment() {
     var score = 0
     lateinit var name: String
     private lateinit var communicator: Communicator
+    lateinit var preferences: Preferences
 
     var questions = arrayListOf<Questions>(
         Questions("Angka berapakah yang tertera pada gambar di bawah?", arrayListOf("12", "1", "2", "15")),
@@ -167,6 +165,9 @@ class QuizTestFragment : Fragment() {
             else
                 komentar = "Dari hasil tes, kemungkinan tidak ada yang salah pada kemampuan mu dalam membedakan warna"
 
+            preferences.setValues("score", score.toString())
+            Log.d("COK", preferences.getValues("score").toString())
+
             communicator.passDataCom(komentar)
 
         }
@@ -206,7 +207,9 @@ class QuizTestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        preferences = Preferences(container!!.getContext())
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_quiz_test, container, false)
+
         randomQuestions()
         binding.quiz = this
         return binding.root

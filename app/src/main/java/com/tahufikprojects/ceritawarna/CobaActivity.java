@@ -53,7 +53,6 @@ public class CobaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bundle = intent.getExtras();
         username = (String) bundle.get("USERNAME");
-        Toast.makeText(CobaActivity.this,  username, Toast.LENGTH_SHORT).show();
         dataStr = username;
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -88,6 +87,7 @@ public class CobaActivity extends AppCompatActivity {
                 preferences.setValues("nama", "");
                 preferences.setValues("email", "");
                 preferences.setValues("username", "");
+                preferences.setValues("score", "0");
                 finishAffinity();
 
                 Intent intent = new Intent(CobaActivity.this, OnBoardingActivity.class);

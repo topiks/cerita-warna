@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     TextView textView;
+    Preferences preferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,16 +36,32 @@ public class HomeFragment extends Fragment {
         CobaActivity activity = (CobaActivity) getActivity();
         String myDataFromActivity = activity.getMyData();
 
-//        Toast.makeText(activity,  myDataFromActivity, Toast.LENGTH_SHORT).show();
+        preferences = new Preferences(container.getContext());
+        String score = preferences.getValues("score");
+        int result = Integer.valueOf(score);
+        String katakaa;
 
-
+        if(result <= 9)
+            katakaa = "Wah, sayang sekali sepertinya kamu harus memeriksakan mata mu ke dokter";
+        else if(result >= 10 && result <= 12)
+            katakaa = "Hasil masih tidak dapat dipastikan antara buta warna  parsial atau tidak";
+        else
+            katakaa = "Dari hasil tes, kemungkinan tidak ada yang salah pada kemampuan mu dalam membedakan warna";
 
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 //        View root_header = inflater.inflate(R.layout.app_bar_main, container, false);
          TextView textView = root.findViewById(R.id.nama_pengguna);
+         TextView komentar = root.findViewById(R.id.komentar_tes);
+
         textView.setText(myDataFromActivity);
+
+        if(score == null || score == "0")
+        {}
+        else
+            komentar.setText(katakaa);
+
 
         final Button button = root.findViewById(R.id.btn_tes_dari_home);
         final Toolbar toolbar =  root.findViewById(R.id.toolbar);

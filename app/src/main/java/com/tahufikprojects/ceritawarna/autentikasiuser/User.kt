@@ -6,4 +6,5 @@ class User {
     var password:String ?=""
     var status:String ?=""
     var username:String ?=""
+    var score:String ?="0"
 }

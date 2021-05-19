@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import com.tahufikprojects.ceritawarna.CobaActivity
 import com.tahufikprojects.ceritawarna.R
 import kotlinx.android.synthetic.main.activity_daftar.*
 import com.tahufikprojects.ceritawarna.HomeActivity
+import com.tahufikprojects.ceritawarna.utils.Preferences
 
 
 class DaftarActivity : AppCompatActivity() {
@@ -21,6 +23,9 @@ class DaftarActivity : AppCompatActivity() {
     lateinit var mFirebaseDatabase: FirebaseDatabase
     lateinit var mDatabase: DatabaseReference
 
+//    lateinit var preferences: Preferences
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daftar)
@@ -28,6 +33,8 @@ class DaftarActivity : AppCompatActivity() {
         mFirebaseDatabase = FirebaseDatabase.getInstance()
         mDatabase = FirebaseDatabase.getInstance().getReference()
         mDatabaseReference = mFirebaseDatabase.getReference("User")
+
+//        preferences = Preferences(this)
 
         btn_daftar_confirm.setOnClickListener {
 
@@ -92,14 +99,15 @@ class DaftarActivity : AppCompatActivity() {
                 {
                     mDatabaseReference.child(inputUsername).setValue(data)
 
-                    var intent = Intent(this@DaftarActivity, HomeActivity::class.java)
+                    var intent = Intent(this@DaftarActivity, MasukActivity::class.java)
+//                    intent.putExtra("USERNAME", preferences.getValues("username"))
                     startActivity(intent)
 
                     finishAffinity()
                 }
                 else
                 {
-                    Toast.makeText(this@DaftarActivity, "email sudah ada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@DaftarActivity, "Akun sudah dibuat", Toast.LENGTH_LONG).show()
                 }
             }
         })

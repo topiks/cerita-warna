@@ -32,7 +32,13 @@ class MasukActivity : AppCompatActivity() {
             finishAffinity()
 
             var goHome = Intent(this@MasukActivity, CobaActivity::class.java)
+            goHome.putExtra("USERNAME", preferences.getValues("nama"));
             startActivity(goHome)
+        }
+
+        atau_daftar.setOnClickListener {
+            var goDaftar = Intent(this@MasukActivity, DaftarActivity::class.java)
+            startActivity(goDaftar)
         }
 
         btn_masuk_confirm.setOnClickListener {
@@ -76,11 +82,13 @@ class MasukActivity : AppCompatActivity() {
                 {
                     if(user.password.equals(inputPass))
                     {
-                        preferences.setValues("nama", user.email.toString())
-                        preferences.setValues("email", user.nama.toString())
+                        preferences.setValues("nama", user.nama.toString())
+                        preferences.setValues("email", user.email.toString())
+                        preferences.setValues("username", user.username.toString())
                         preferences.setValues("status", "1")
                         
                         var intent = Intent(this@MasukActivity, HomeActivity::class.java)
+//                        intent.putExtra("USERNAME", nama)
                         startActivity(intent)
                         finishAffinity()
                     }

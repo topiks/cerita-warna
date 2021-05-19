@@ -17,6 +17,14 @@ class HomeActivity : AppCompatActivity() {
 
         preferences = Preferences(this)
 
+        if(preferences.getValues("status").equals("1"))
+        {
+            finishAffinity()
+
+            var goHome = Intent(this@HomeActivity, com.tahufikprojects.ceritawarna.CobaActivity::class.java)
+            goHome.putExtra("USERNAME", preferences.getValues("nama"));
+            startActivity(goHome)
+        }
 
         // debugging deteksi warna
         btn_reset.setOnClickListener {

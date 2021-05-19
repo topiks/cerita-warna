@@ -90,11 +90,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginEnd="70dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/shape_blue_button"
         android:fontFamily="@font/lora"
         android:text="Masuk"
         android:textColor="@color/baseBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/atau_daftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:background="?android:attr/panelBackground"
+        android:fontFamily="@font/lora"
+        android:text="atau Daftar"
+        android:textAllCaps="false"
+        android:textColor="@color/baseBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

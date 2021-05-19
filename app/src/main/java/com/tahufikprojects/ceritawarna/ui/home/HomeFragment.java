@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +16,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.tahufikprojects.ceritawarna.CobaActivity;
+import com.tahufikprojects.ceritawarna.utils.Preferences;
+
 import com.tahufikprojects.ceritawarna.R;
+
+import org.w3c.dom.Text;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +37,10 @@ public class HomeFragment extends Fragment {
 //        final TextView textView = root.findViewById(R.id.text_home);
         final Button button = root.findViewById(R.id.btn_tes_dari_home);
         final Toolbar toolbar =  root.findViewById(R.id.toolbar);
+
+        textView = root.findViewById(R.id.nama_pengguna);
+
+
 
         button.setOnClickListener(new View.OnClickListener()
                                   {

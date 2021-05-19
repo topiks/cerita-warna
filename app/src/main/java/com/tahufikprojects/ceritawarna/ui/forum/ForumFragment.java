@@ -22,21 +22,17 @@ import com.tahufikprojects.ceritawarna.forum.ForumMainActivity;
 public class ForumFragment extends Fragment {
 
     private ForumViewModel forumViewModel;
-    Button mbutton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         forumViewModel =
                 ViewModelProviders.of(this).get(ForumViewModel.class);
         View root = inflater.inflate(R.layout.fragment_forum, container, false);
-//        final TextView textView = root.findViewById(R.id.text_forum);
         final Button button = root.findViewById(R.id.button_forum_from_fragment);
         final Toolbar toolbar = root.findViewById(R.id.toolbar);
         forumViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//                toolbar.setBackgroundColor(0);
             }
         });
 
@@ -48,8 +44,6 @@ public class ForumFragment extends Fragment {
                                           Intent intent = new Intent();
                                           intent.setClass(getActivity(), ForumMainActivity.class);
                                           startActivity(intent);
-//                                          toolbar.setBackgroundResource(R.drawable.shape_blue_muda_button);
-
                                       }
                                   }
         );

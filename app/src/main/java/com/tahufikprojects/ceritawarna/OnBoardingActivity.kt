@@ -24,6 +24,14 @@ class OnBoardingActivity : AppCompatActivity() {
             startActivity(goHome)
         }
 
+//        if(preferences.getValues("status").equals("1"))
+//        {
+//            finishAffinity()
+//
+//            var goHome = Intent(this@OnBoardingActivity, MasukActivity::class.java)
+//            startActivity(goHome)
+//        }
+
         btn_masuk.setOnClickListener {
             preferences.setValues("onboarding", "1")
             finishAffinity()
@@ -33,6 +41,9 @@ class OnBoardingActivity : AppCompatActivity() {
         }
 
         btn_daftar.setOnClickListener {
+            preferences.setValues("onboarding", "1")
+            finishAffinity()
+
             var intent = Intent(this@OnBoardingActivity, DaftarActivity::class.java)
             startActivity(intent)
 

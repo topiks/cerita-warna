@@ -1,9 +1,11 @@
 package com.tahufikprojects.ceritawarna;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.icu.text.CaseMap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
@@ -23,12 +25,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
+import com.tahufikprojects.ceritawarna.cobacari.DetailsActivity;
+import com.tahufikprojects.ceritawarna.utils.Preferences;
+
 import java.util.List;
 
 public class CobaActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     Toolbar toolbar;
+    Bundle bundle;
+    String username;
+    Preferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,13 @@ public class CobaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         toolbar.setBackgroundColor(Color.rgb(255,0,0));
+        preferences = new Preferences(this);
+
+        Intent intent = getIntent();
+        bundle = intent.getExtras();
+        username = (String) bundle.get("USERNAME");
+        Toast.makeText(CobaActivity.this,  username, Toast.LENGTH_SHORT).show();
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -57,7 +73,28 @@ public class CobaActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.coba, menu);
+//        Toast.makeText(CobaActivity.this,  username, Toast.LENGTH_SHORT).show();
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                preferences.setValues("onboarding", "");
+                preferences.setValues("status", "");
+                preferences.setValues("nama", "");
+                preferences.setValues("email", "");
+                preferences.setValues("username", "");
+                finishAffinity();
+
+                Intent intent = new Intent(CobaActivity.this, OnBoardingActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

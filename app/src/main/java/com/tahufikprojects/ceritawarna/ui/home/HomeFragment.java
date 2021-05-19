@@ -2,6 +2,7 @@ package com.tahufikprojects.ceritawarna.ui.home;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,15 +31,25 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        CobaActivity activity = (CobaActivity) getActivity();
+        String myDataFromActivity = activity.getMyData();
+
+//        Toast.makeText(activity,  myDataFromActivity, Toast.LENGTH_SHORT).show();
+
+
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 //        View root_header = inflater.inflate(R.layout.app_bar_main, container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
+         TextView textView = root.findViewById(R.id.nama_pengguna);
+        textView.setText(myDataFromActivity);
+
         final Button button = root.findViewById(R.id.btn_tes_dari_home);
         final Toolbar toolbar =  root.findViewById(R.id.toolbar);
 
-        textView = root.findViewById(R.id.nama_pengguna);
+
 
 
 
@@ -54,6 +65,7 @@ public class HomeFragment extends Fragment {
 
 //                                          toolbar.setBackgroundColor(Color.rgb(255,0,0));
 //                                          button.setBackgroundColor(Color.rgb(255,0,0));
+
                                       }
                                   }
         );

@@ -38,6 +38,7 @@ public class CobaActivity extends AppCompatActivity {
     Bundle bundle;
     String username;
     Preferences preferences;
+    String dataStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class CobaActivity extends AppCompatActivity {
         bundle = intent.getExtras();
         username = (String) bundle.get("USERNAME");
         Toast.makeText(CobaActivity.this,  username, Toast.LENGTH_SHORT).show();
-
+        dataStr = username;
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -122,5 +123,9 @@ public class CobaActivity extends AppCompatActivity {
         Fragment currentFragment = getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
         return currentFragment;
+    }
+    public String getMyData()
+    {
+        return dataStr;
     }
 }

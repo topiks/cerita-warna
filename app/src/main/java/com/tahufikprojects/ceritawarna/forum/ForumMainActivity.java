@@ -52,8 +52,8 @@ public class ForumMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forum_main);
 
         mLinearLayoutManager = new LinearLayoutManager(this);
-        mLinearLayoutManager.setReverseLayout(true);
-        mLinearLayoutManager.setStackFromEnd(true);
+        mLinearLayoutManager.setReverseLayout(false);
+        mLinearLayoutManager.setStackFromEnd(false);
 //        toolbar = findViewById(R.id.toolbar_forum);
         recyclerView = findViewById(R.id.chat_rv);
         editText = findViewById(R.id.msg_text);
@@ -100,7 +100,7 @@ public class ForumMainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.pesan_saya, parent, false);
+                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.pesan_kamu, parent, false);
                 ViewHolder viewHolder = new ViewHolder(itemView);
 
                 viewHolder.setOnClickListener(new ViewHolder.ClickListener() {

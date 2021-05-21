@@ -54,8 +54,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         }
         else if(inisialisasi.equals("forum_saya"))
         {
-            TextView mNama = mview.findViewById(R.id.nama_jurusan_pesan_saya);
-            TextView mMsg = mview.findViewById(R.id.list_kampus_pesan_saya);
+            TextView mNama = mview.findViewById(R.id.nama_jurusan_pesan_kamu);
+            TextView mMsg = mview.findViewById(R.id.list_kampus_pesan_kamu);
 
             mNama.setText(namaSaya);
             mMsg.setText(pesanSaya);

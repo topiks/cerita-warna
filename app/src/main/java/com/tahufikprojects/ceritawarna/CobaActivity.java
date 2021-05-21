@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.icu.text.CaseMap;
@@ -27,6 +28,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
 import com.tahufikprojects.ceritawarna.cobacari.DetailsActivity;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 import com.tahufikprojects.ceritawarna.utils.Preferences;
 
 import java.util.List;
@@ -39,6 +41,7 @@ public class CobaActivity extends AppCompatActivity {
     String username;
     Preferences preferences;
     String dataStr;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,10 @@ public class CobaActivity extends AppCompatActivity {
         dataStr = username;
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -67,13 +73,31 @@ public class CobaActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        Fragment f = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        String name = f.getClass().getCanonicalName();
+//        if(f instanceof HomeFragment)
+//        {
+            Log.d("HIIH", name);
+//        }
+
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(MenuItem menuItem) {
+//                switch (menuItem.getItemId()) {
+//                    case R.id.nav_home:
+//                        Log.d("HAHA", "haha");
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.coba, menu);
-//        Toast.makeText(CobaActivity.this,  username, Toast.LENGTH_SHORT).show();
         return true;
     }
 
@@ -117,15 +141,11 @@ public class CobaActivity extends AppCompatActivity {
 //        return null;
 //    }
 
-
-    Fragment getCurrentFragment()
-    {
-        Fragment currentFragment = getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
-        return currentFragment;
-    }
     public String getMyData()
     {
         return dataStr;
     }
+
+
+
 }

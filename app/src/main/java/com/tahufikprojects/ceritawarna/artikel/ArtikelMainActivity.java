@@ -59,7 +59,8 @@ public class ArtikelMainActivity extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ArtikelModel, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull ArtikelModel model) {
-                holder.setDetails(getApplicationContext(), "", "", "artikel", model.getJudul(), model.getIsi());
+                holder.setDetails(getApplicationContext(), "", "", "artikel", model.getJudul(), model.getIsi(), "", "");
+//                Toast.makeText(ArtikelMainActivity.this, model.getJudul(), Toast.LENGTH_SHORT).show();
                 judulModelArrayList.add(model.getJudul());
                 isiModelArrayList.add(model.getIsi());
             }
@@ -84,7 +85,6 @@ public class ArtikelMainActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     }
-
 
                     @Override
                     public void onItemLongClick(View view, int position) {

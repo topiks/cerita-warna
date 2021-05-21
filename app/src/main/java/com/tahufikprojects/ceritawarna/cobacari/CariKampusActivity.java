@@ -94,7 +94,7 @@ public class CariKampusActivity extends AppCompatActivity {
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<KampusModel, ViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull KampusModel model) {
-                    holder.setDetails(getApplicationContext(), model.getKampus(), model.getJurusan(), "kampus", "", "");
+                    holder.setDetails(getApplicationContext(), model.getKampus(), model.getJurusan(), "kampus", "", "", "", "");
                     jurusanModelArrayList.add(model.getJurusan());
                     kampusModelArrayList.add(model.getKampus());
             }

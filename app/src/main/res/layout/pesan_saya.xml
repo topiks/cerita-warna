@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view_pesan_saya"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="-20dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="1dp"
+        android:background="#a9f1df"
+        app:layout_constraintBottom_toBottomOf="@+id/textView31"
+        app:layout_constraintEnd_toEndOf="@+id/textView35"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/nama_jurusan_pesan_saya"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:fontFamily="@font/lora"
+        android:text="Nama Anda"
+        android:textSize="12sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/list_kampus_pesan_saya"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/list_kampus_pesan_saya"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:fontFamily="sans-serif"
+        android:text="Pesan Anda"
+        android:textAlignment="viewStart"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView31"
+        app:layout_constraintEnd_toEndOf="@+id/nama_jurusan_pesan_saya"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/nama_jurusan_pesan_saya"
+        tools:layout_editor_absoluteX="176dp" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView32"
+        tools:layout_editor_absoluteX="185dp" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="169dp" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="1dp"
+        android:layout_height="9dp"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        tools:layout_editor_absoluteX="120dp" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nama_jurusan_pesan_saya" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

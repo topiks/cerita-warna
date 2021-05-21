@@ -34,7 +34,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setDetails(Context ctx, String namaJurusan, String namaKampus, String inisialisasi, String judulArtikel, String isiArtikel)
+    public void setDetails(Context ctx, String namaJurusan, String namaKampus, String inisialisasi, String judulArtikel, String isiArtikel, String namaSaya, String pesanSaya)
     {
         if(inisialisasi.equals("jurusan") || inisialisasi.equals("kampus"))
         {
@@ -51,6 +51,14 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
             mJudul.setText(judulArtikel);
             mIsi.setText(isiArtikel);
+        }
+        else if(inisialisasi.equals("forum_saya"))
+        {
+            TextView mNama = mview.findViewById(R.id.nama_jurusan_pesan_saya);
+            TextView mMsg = mview.findViewById(R.id.list_kampus_pesan_saya);
+
+            mNama.setText(namaSaya);
+            mMsg.setText(pesanSaya);
         }
 
     }

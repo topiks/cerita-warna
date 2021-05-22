@@ -77,7 +77,7 @@ public class CobaActivity extends AppCompatActivity {
         String name = f.getClass().getCanonicalName();
 //        if(f instanceof HomeFragment)
 //        {
-            Log.d("HIIH", name);
+        Log.d("HIIH", name);
 //        }
 
 //        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -111,7 +111,7 @@ public class CobaActivity extends AppCompatActivity {
                 preferences.setValues("nama", "");
                 preferences.setValues("email", "");
                 preferences.setValues("username", "");
-                preferences.setValues("score", "0");
+                preferences.setValues("score", "");
                 finishAffinity();
 
                 Intent intent = new Intent(CobaActivity.this, OnBoardingActivity.class);

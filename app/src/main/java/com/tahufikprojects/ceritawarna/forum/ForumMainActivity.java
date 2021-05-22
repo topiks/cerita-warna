@@ -55,6 +55,7 @@ public class ForumMainActivity extends AppCompatActivity {
     ArrayList<String> pesanModelArrayList;
     String username;
     int src;
+    int clk;
 
     // container chat
     ArrayList<String> usernameArrayList;
@@ -90,6 +91,7 @@ public class ForumMainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Forum");
 
+        clk = 0;
         showPesan();
 
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +137,12 @@ public class ForumMainActivity extends AppCompatActivity {
                         src = 1;
                         holder.setDetails(getApplicationContext(), "", "", "forum_kamu", "", "", model.getNama(), model.getPesan());
 //                        usernameArrayList.add(model.getUsername());
+                    }
+
+                    if(clk == 0)
+                    {
+                        recyclerView.smoothScrollToPosition(View.FOCUS_DOWN);
+                        clk = 1;
                     }
             }
 

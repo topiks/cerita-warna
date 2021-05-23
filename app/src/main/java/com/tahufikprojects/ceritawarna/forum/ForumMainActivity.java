@@ -98,10 +98,20 @@ public class ForumMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String msg = editText.getText().toString();
-                saveDatabase(username, nama, msg);
-                simpanArray();
-//                recyclerView.smoothScrollToPosition(recyclerView.getAdapter().getItemCount());
-                recyclerView.smoothScrollToPosition(View.FOCUS_DOWN);
+
+                if(msg.equals(""))
+                {
+                    editText.setError(null);
+                    editText.requestFocus();
+                }
+
+                else
+                {
+                    saveDatabase(username, nama, msg);
+                    simpanArray();
+                    recyclerView.smoothScrollToPosition(View.FOCUS_DOWN);
+                }
+
             }
         });
 

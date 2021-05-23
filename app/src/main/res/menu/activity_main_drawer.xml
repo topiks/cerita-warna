@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
 <!--        <item-->
 <!--            android:id="@+id/nav_gallery"-->
@@ -18,24 +18,24 @@
 <!--            android:title="@string/menu_slideshow" />-->
         <item
             android:id="@+id/nav_tes"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_test"
             android:title="Tes Buta Warna" />
         <item
             android:id="@+id/nav_jurusan"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_search"
             android:title="Cari Jurusan" />
         <item
             android:id="@+id/nav_forum"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_forum"
             android:title="Forum" />
         <item
             android:id="@+id/nav_deteksi"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_detect"
             android:title="Deteksi Warna"
             />
         <item
             android:id="@+id/nav_artikel"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_article"
             android:title="Artikel Pilihan"
 
             />

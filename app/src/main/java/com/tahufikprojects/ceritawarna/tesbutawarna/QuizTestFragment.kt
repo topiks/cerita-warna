@@ -177,15 +177,7 @@ class QuizTestFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-//        name = currentQuestions.g
-//        val imageResource:Int
-//        imageResource =
-//            resources.getIdentifier(name, null, activity!!.packageName)
-//
-//        Toast.makeText(activity, questionIndex.toString(), Toast.LENGTH_SHORT).show()
-
         bgsoal.setImageResource(R.drawable.soal1)
-
 
         btn_tes_1.setOnClickListener {
             checkAnswers(btn_tes_1.text.toString())

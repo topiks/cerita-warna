@@ -1,11 +1,23 @@
 package com.tahufikprojects.ceritawarna.tesbutawarna
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import com.tahufikprojects.ceritawarna.CobaActivity
 import com.tahufikprojects.ceritawarna.R
+import com.tahufikprojects.ceritawarna.autentikasiuser.DaftarActivity
+import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity
+import com.tahufikprojects.ceritawarna.databinding.FragmentResultBinding
+import com.tahufikprojects.ceritawarna.databinding.FragmentTesRuleBinding
+import com.tahufikprojects.ceritawarna.forum.ForumMainActivity
 import kotlinx.android.synthetic.main.fragment_result.*
 import kotlinx.android.synthetic.main.fragment_result.view.*
 
@@ -23,16 +35,32 @@ class ResultFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var mContext: Context? = null
 
     var displayScore: String? = ""
     var skor: Int = 0
     var komentar: String = ""
+
+    lateinit var binding: FragmentResultBinding
+
+    protected lateinit var baseActivity: TestMainActivity
+    protected lateinit var contextFragment: Context
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is TestMainActivity) {
+            this.baseActivity = context
+        }
+        this.contextFragment = context
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
         }
     }
 
@@ -42,9 +70,28 @@ class ResultFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_result, container, false)
-        displayScore = arguments?.getString("msg")
 
+        displayScore = arguments?.getString("msg")
         view.hasiltes.text = displayScore
+
+        val btn_jurusan = view.findViewById<View>(R.id.btn_jurusan_dari_tes) as Button
+        val btn_forum = view.findViewById<View>(R.id.btn_diskusi_dari_tes) as Button
+        val btn_beranda = view.findViewById<View>(R.id.btn_beranda_dari_tes) as Button
+
+        btn_jurusan.setOnClickListener {
+            val intent = Intent(container?.getContext(), CobaCariMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_forum.setOnClickListener {
+            val intent = Intent(container?.getContext(), ForumMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        btn_beranda.setOnClickListener {
+            val intent = Intent(container?.getContext(), CobaActivity::class.java)
+            startActivity(intent)
+        }
 
         return view
     }

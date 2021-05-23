@@ -25,13 +25,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
-import com.tahufikprojects.ceritawarna.cobacari.DetailsActivity;
-import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 import com.tahufikprojects.ceritawarna.utils.Preferences;
-
-import java.util.List;
 
 public class CobaActivity extends AppCompatActivity {
 
@@ -60,11 +54,6 @@ public class CobaActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-
-
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home)
                 .setDrawerLayout(drawer)
@@ -75,23 +64,6 @@ public class CobaActivity extends AppCompatActivity {
 
         Fragment f = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         String name = f.getClass().getCanonicalName();
-//        if(f instanceof HomeFragment)
-//        {
-        Log.d("HIIH", name);
-//        }
-
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem menuItem) {
-//                switch (menuItem.getItemId()) {
-//                    case R.id.nav_home:
-//                        Log.d("HAHA", "haha");
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
-
     }
 
     @Override
@@ -128,18 +100,6 @@ public class CobaActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-//
-//    public Fragment getVisibleFragment(){
-//        FragmentManager fragmentManager = CobaActivity.this.getSupportFragmentManager();
-//        List<Fragment> fragments = fragmentManager.getFragments();
-//        if(fragments != null){
-//            for(Fragment fragment : fragments){
-//                if(fragment != null && fragment.isVisible())
-//                    return fragment;
-//            }
-//        }
-//        return null;
-//    }
 
     public String getMyData()
     {

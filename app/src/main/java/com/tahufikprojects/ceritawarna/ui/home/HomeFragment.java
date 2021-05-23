@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna.ui.home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.tahufikprojects.ceritawarna.CobaActivity;
+import com.tahufikprojects.ceritawarna.tesbutawarna.TestMainActivity;
 import com.tahufikprojects.ceritawarna.utils.Preferences;
 
 import com.tahufikprojects.ceritawarna.R;
@@ -64,9 +66,6 @@ public class HomeFragment extends Fragment {
 
         textView.setText(myDataFromActivity);
 
-//        if(score == null || score == "0")
-//        {}
-//        else
         komentar.setText(katakaa);
 
 
@@ -82,14 +81,9 @@ public class HomeFragment extends Fragment {
                                       @Override
                                       public void onClick( View v)
                                       {
-//                                          Intent intent = new Intent();
-//                                          intent.setClass(getActivity(), CapActivity.class);
-//                                          startActivity(intent);
-//                                          toolbar.setBackgroundResource(R.drawable.shape_blue_muda_button);
-
-//                                          toolbar.setBackgroundColor(Color.rgb(255,0,0));
-//                                          button.setBackgroundColor(Color.rgb(255,0,0));
-
+                                          Intent intent = new Intent();
+                                          intent.setClass(getActivity(), TestMainActivity.class);
+                                          startActivity(intent);
                                       }
                                   }
         );

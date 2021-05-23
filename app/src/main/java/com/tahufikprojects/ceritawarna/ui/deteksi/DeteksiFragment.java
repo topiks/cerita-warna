@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna.ui.deteksi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,35 +22,42 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.appbar.AppBarLayout;
 import com.tahufikprojects.ceritawarna.R;
 import com.tahufikprojects.ceritawarna.deteksiwarna.CapActivity;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 
 public class DeteksiFragment extends Fragment {
+    HomeFragment.OnCallbackReceived mCallback;
 
-    private DeteksiViewModel deteksiViewModel;
+    public interface OnCallbackReceived {
+        public void Update(String data);
+    }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mCallback = (HomeFragment.OnCallbackReceived) activity;
+        } catch (ClassCastException e) {
+
+        }
+    }
+
+    private DeteksiViewModel DeteksiFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-
-        deteksiViewModel =
+        DeteksiFragment =
                 ViewModelProviders.of(this).get(DeteksiViewModel.class);
         View root = inflater.inflate(R.layout.fragment_deteksi, container, false);
-        View general_view =  inflater.inflate(R.layout.app_bar_main, container, false);
-//        final TextView textView = root.findViewById(R.id.text_deteksi);
+
         final Button button = root.findViewById(R.id.btn_deteksi);
 
-        final Toolbar toolbar = general_view.findViewById(R.id.toolbar);
-
-
-        toolbar.setBackgroundColor(Color.rgb(255,0,0));
-
-        deteksiViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        mCallback.Update("deteksi");
+        DeteksiFragment.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-//                textView.setText(s);
+
             }
-
-
         });
 
         button.setOnClickListener(new View.OnClickListener()
@@ -60,13 +68,9 @@ public class DeteksiFragment extends Fragment {
                                           Intent intent = new Intent();
                                           intent.setClass(getActivity(), CapActivity.class);
                                           startActivity(intent);
-//                                          toolbar.setBackgroundResource(R.drawable.shape_blue_muda_button);
-
                                       }
                                   }
         );
         return root;
-//
-
     }
 }

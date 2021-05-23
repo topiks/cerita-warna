@@ -16,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.core.Tag;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -25,9 +26,18 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
+import com.tahufikprojects.ceritawarna.ui.artikel.ArtikelFragment;
+import com.tahufikprojects.ceritawarna.ui.deteksi.DeteksiFragment;
+import com.tahufikprojects.ceritawarna.ui.forum.ForumFragment;
+import com.tahufikprojects.ceritawarna.ui.gallery.GalleryFragment;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
+import com.tahufikprojects.ceritawarna.ui.jurusan.JurusanFragment;
+import com.tahufikprojects.ceritawarna.ui.tes.TesFragment;
 import com.tahufikprojects.ceritawarna.utils.Preferences;
 
-public class CobaActivity extends AppCompatActivity {
+public class CobaActivity extends AppCompatActivity implements HomeFragment.OnCallbackReceived, ArtikelFragment.OnCallbackReceived, JurusanFragment.OnCallbackReceived, TesFragment.OnCallbackReceived, ForumFragment.OnCallbackReceived, DeteksiFragment.OnCallbackReceived, GalleryFragment.OnCallbackReceived {
 
     private AppBarConfiguration mAppBarConfiguration;
     Toolbar toolbar;
@@ -36,6 +46,27 @@ public class CobaActivity extends AppCompatActivity {
     Preferences preferences;
     String dataStr;
     NavigationView navigationView;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+    String posisiFragment;
+
+    public void Update(String data) {
+        posisiFragment = data;
+        Log.d("demo", posisiFragment);
+
+        Toolbar toolbarku = findViewById(R.id.toolbar);
+
+        if(posisiFragment.equals("home") || posisiFragment.equals("tes"))
+            toolbarku.setBackgroundColor(Color.rgb(221,14,122));
+        else if(posisiFragment.equals("artikel"))
+            toolbarku.setBackgroundColor(Color.rgb(90, 93, 138));
+        else if(posisiFragment.equals("jurusan"))
+            toolbarku.setBackgroundColor(Color.rgb(80, 128, 204));
+        else if(posisiFragment.equals("forum"))
+            toolbarku.setBackgroundColor(Color.rgb(251, 195, 118));
+        else if(posisiFragment.equals("deteksi") || posisiFragment.equals("gallery"))
+            toolbarku.setBackgroundColor(Color.rgb(119, 210, 168));
+        // Write your logic here.
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +75,10 @@ public class CobaActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        toolbar.setBackgroundColor(Color.rgb(255,0,0));
+//        Toast.makeText(CobaActivity.this, posisiFragment, Toast.LENGTH_SHORT).show();
+
+//        toolbar.setBackgroundColor(Color.rgb(235,233,233));
+
         preferences = new Preferences(this);
 
         Intent intent = getIntent();
@@ -54,6 +88,8 @@ public class CobaActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home)
                 .setDrawerLayout(drawer)
@@ -62,8 +98,6 @@ public class CobaActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Fragment f = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-        String name = f.getClass().getCanonicalName();
     }
 
     @Override
@@ -105,7 +139,6 @@ public class CobaActivity extends AppCompatActivity {
     {
         return dataStr;
     }
-
 
 
 }

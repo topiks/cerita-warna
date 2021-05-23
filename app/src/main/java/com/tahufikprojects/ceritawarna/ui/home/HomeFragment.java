@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna.ui.home;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -32,6 +33,23 @@ public class HomeFragment extends Fragment {
     TextView textView;
     Preferences preferences;
 
+    OnCallbackReceived mCallback;
+
+    public interface OnCallbackReceived {
+        public void Update(String data);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mCallback = (OnCallbackReceived) activity;
+        } catch (ClassCastException e) {
+
+        }
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -41,6 +59,8 @@ public class HomeFragment extends Fragment {
         preferences = new Preferences(container.getContext());
         String score = preferences.getValues("score");
         String katakaa;
+
+        mCallback.Update("home");
 
         if(score.equals("kosong") || score.equals(""))
         {

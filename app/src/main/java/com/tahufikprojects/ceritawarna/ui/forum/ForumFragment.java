@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna.ui.forum;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,8 +19,26 @@ import androidx.lifecycle.ViewModelProviders;
 import com.tahufikprojects.ceritawarna.R;
 import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
 import com.tahufikprojects.ceritawarna.forum.ForumMainActivity;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 
 public class ForumFragment extends Fragment {
+
+    HomeFragment.OnCallbackReceived mCallback;
+
+    public interface OnCallbackReceived {
+        public void Update(String data);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mCallback = (HomeFragment.OnCallbackReceived) activity;
+        } catch (ClassCastException e) {
+
+        }
+    }
 
     private ForumViewModel forumViewModel;
 
@@ -30,6 +49,7 @@ public class ForumFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_forum, container, false);
         final Button button = root.findViewById(R.id.button_forum_from_fragment);
         final Toolbar toolbar = root.findViewById(R.id.toolbar);
+        mCallback.Update("forum");
         forumViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

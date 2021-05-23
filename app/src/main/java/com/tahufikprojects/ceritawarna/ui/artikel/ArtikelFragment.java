@@ -3,6 +3,7 @@ package com.tahufikprojects.ceritawarna.ui.artikel;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,8 +19,26 @@ import android.widget.Button;
 import com.tahufikprojects.ceritawarna.R;
 import com.tahufikprojects.ceritawarna.artikel.ArtikelMainActivity;
 import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 
 public class ArtikelFragment extends Fragment {
+
+    HomeFragment.OnCallbackReceived mCallback;
+
+    public interface OnCallbackReceived {
+        public void Update(String data);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mCallback = (HomeFragment.OnCallbackReceived) activity;
+        } catch (ClassCastException e) {
+
+        }
+    }
 
     private ArtikelViewModel mViewModel;
     Button button;
@@ -31,6 +50,7 @@ public class ArtikelFragment extends Fragment {
         View root = inflater.inflate(R.layout.artikel_fragment, container, false);
 
         final Button button  = root.findViewById(R.id.btn_dari_fragment_artikel);
+        mCallback.Update("artikel");
 
         button.setOnClickListener(new View.OnClickListener()
                                   {

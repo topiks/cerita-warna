@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna.ui.jurusan;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,8 +20,26 @@ import com.tahufikprojects.ceritawarna.cari.CariMainActivity;
 import com.tahufikprojects.ceritawarna.cobacari.CobaCariMainActivity;
 import com.tahufikprojects.ceritawarna.deteksiwarna.CapActivity;
 import com.tahufikprojects.ceritawarna.tesbutawarna.TestMainActivity;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 
 public class JurusanFragment extends Fragment {
+
+    HomeFragment.OnCallbackReceived mCallback;
+
+    public interface OnCallbackReceived {
+        public void Update(String data);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mCallback = (HomeFragment.OnCallbackReceived) activity;
+        } catch (ClassCastException e) {
+
+        }
+    }
 
     private JurusanViewModel jurusanViewModel;
     Button button;
@@ -32,6 +51,7 @@ public class JurusanFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_jurusan, container, false);
 //        final TextView textView = root.findViewById(R.id.text_jurusan);
         final Button button = root.findViewById(R.id.button_cari_mulai);
+        mCallback.Update("jurusan");
         jurusanViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

@@ -1,5 +1,6 @@
 package com.tahufikprojects.ceritawarna.ui.tes;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,8 +18,26 @@ import androidx.lifecycle.ViewModelProviders;
 import com.tahufikprojects.ceritawarna.R;
 import com.tahufikprojects.ceritawarna.deteksiwarna.CapActivity;
 import com.tahufikprojects.ceritawarna.tesbutawarna.TestMainActivity;
+import com.tahufikprojects.ceritawarna.ui.home.HomeFragment;
 
 public class TesFragment extends Fragment {
+
+    HomeFragment.OnCallbackReceived mCallback;
+
+    public interface OnCallbackReceived {
+        public void Update(String data);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        try {
+            mCallback = (HomeFragment.OnCallbackReceived) activity;
+        } catch (ClassCastException e) {
+
+        }
+    }
 
     private TesViewModel mViewModel;
     Button button;
@@ -30,6 +49,7 @@ public class TesFragment extends Fragment {
         View root = inflater.inflate(R.layout.tes_fragment, container, false);
 //        final TextView textView = root.findViewById(R.id.text_tes);
         final Button button = root.findViewById(R.id.btn_tes);
+        mCallback.Update("tes");
         mViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
